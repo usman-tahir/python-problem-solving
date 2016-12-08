@@ -22,21 +22,18 @@ class Deck:
 
     def draw(self, number = 1):
         hand = []
-        for x in range(number):
-            hand.append(card.Card.__str__(self.contents.pop()))
-        self.size -= number
-        print("There are now %d cards in the deck." % (self.size))
-        return hand
+        if self.size - number >= 0:
+            for x in range(number):
+                hand.append(card.Card.__str__(self.contents.pop()))
+            self.size -= number
+            print("There are now %d cards in the deck." % (self.size))
+            return hand
+        else:
+            print("You cannot draw that amount of cards from the deck.")
+            return hand
 
     def __str__(self):
         card_strings = []
         for c in self.contents:
             card_strings.append(card.Card.__str__(c))
         return card_strings
-
-deck = Deck()
-print(deck.get_size())
-deck.shuffle()
-print(deck.draw()) # draw 1
-print(deck.draw(3)) # draw 3
-# print(Deck.__str__(deck))
