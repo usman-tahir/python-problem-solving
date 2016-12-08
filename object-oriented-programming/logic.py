@@ -42,17 +42,8 @@ class BinaryGate(LogicGate):
             if self.pin_b == None:
                 self.pin_b = source
             else:
-                raise RuntimeError("Error: No empty pins.")
-
-
-class UnaryGate(LogicGate):
-    def __init__(self, n):
-        LogicGate.__init__(self, n)
-        self.pin = None
-
-    def get_pin(self):
-        return(int(input("Enter Pin input for gate " \
-            + self.get_label() + " --> ")))
+                # raise RuntimeError("Error: No empty pins.")
+                print("Cannot connect: No empty pins on this gate.")
 
 class AndGate(BinaryGate):
     def __init__(self, n):
@@ -80,6 +71,15 @@ class OrGate(BinaryGate):
         else:
             return 0
 
+class UnaryGate(LogicGate):
+    def __init__(self, n):
+        LogicGate.__init__(self, n)
+        self.pin = None
+
+    def get_pin(self):
+        return(int(input("Enter Pin input for gate " \
+            + self.get_label() + " --> ")))
+
 class NotGate(UnaryGate):
     def __init__(self, n):
         UnaryGate.__init__(self, n)
@@ -102,11 +102,14 @@ class Connector:
     def get_to(self):
         return self.to_gate
 
-# g1 = AndGate("g1")
-# print(g1.perform_gate_logic())
+g1 = AndGate("g1")
+print(g1.perform_gate_logic())
 
-# g2 = OrGate("g2")
-# print(g2.perform_gate_logic())
+g2 = OrGate("g2")
+print(g2.perform_gate_logic())
 
-# n1 = NotGate("n1")
-# print(n1.perform_gate_logic())
+g3 = UnaryGate("g3")
+print(g3.get_pin())
+
+g4 = NotGate("g4")
+print(g4.perform_gate_logic())
