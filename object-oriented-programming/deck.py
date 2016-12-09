@@ -42,6 +42,6 @@ class Deck:
 d = Deck()
 d.shuffle()
 
-p = player.Player()
+p = player.Player("Usman")
 p.set_hand(d.draw(2))
 p.show_hand()

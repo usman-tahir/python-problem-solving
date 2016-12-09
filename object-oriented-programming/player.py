@@ -1,6 +1,7 @@
 
 class Player:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.hand = []
         self.score = 0
 
@@ -17,6 +18,6 @@ class Player:
         self.score = score
 
     def show_hand(self):
-        print("This player has the following cards:")
+        print("\n%s has the following cards:" % (self.name))
         for h in self.hand:
             print(h)
