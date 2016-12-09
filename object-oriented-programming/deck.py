@@ -1,5 +1,6 @@
 
 import card
+import player
 import random
 
 class Deck:
@@ -37,3 +38,10 @@ class Deck:
         for c in self.contents:
             card_strings.append(card.Card.__str__(c))
         return card_strings
+
+d = Deck()
+d.shuffle()
+
+p = player.Player()
+p.set_hand(d.draw(2))
+p.show_hand()
