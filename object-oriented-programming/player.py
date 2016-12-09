@@ -21,3 +21,6 @@ class Player:
         print("\n%s has the following cards:" % (self.name))
         for h in self.hand:
             print(h)
+
+    def __str__(self):
+        return "\nName: " + self.name + "\nScore: " + str(self.score)
