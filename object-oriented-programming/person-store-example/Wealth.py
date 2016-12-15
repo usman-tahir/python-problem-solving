@@ -18,31 +18,32 @@ class StoreWealth(Wealth):
         Wealth.__init__(self, amount, units)
         self.store_name = store_name
 
-    def deposit(self, amount):
-        self.amount += amount
+    def deposit(self, amount = 0):
+        self.amount += int(amount)
         print("%s just increased its wealth by %d %s." \
             % (self.store_name, amount, self.units))
         print("Current wealth: %d %s." % (self.amount, self.units))
 
-    def withdraw(self, amount):
+    def withdraw(self, amount = 0):
         if amount > self.amount:
             print("You cannot withdraw that much wealth from the store.")
         else:
             self.amount -= amount
             print("%s just decreased its wealth by %d %s." \
                 % (self.store_name, amount, self.units))
-            print("Current wealth: %d %s" % (self.amount, self.units))
+            print("Current wealth: %d %s." % (self.amount, self.units))
 
 class PersonWealth(Wealth):
     def __init__(self, person_name, amount = 0, units = "coins"):
         Wealth.__init__(self, amount, units)
         self.person_name = person_name
 
-    def deposit(self, amount):
-        self.amount += amount
+    def deposit(self, amount = 0):
+        print("AMOUNT: %d" % amount)
+        self.amount += int(amount)
         print("%s just increased their wealth by %d %s" \
             % (self.person_name, amount, self.units))
-        print("Current wealth: %d %s" % (self.amount, self.units))
+        print("Current wealth: %d %s." % (self.amount, self.units))
 
     def withdraw(self, amount):
         if amount > self.amount:
@@ -52,4 +53,4 @@ class PersonWealth(Wealth):
             self.amount -= amount
             print("%s just decreased their wealth by %d %s." \
                 % (self.person_name, amount, self.units))
-            print("Current wealth: %d %s" % (self.amount, self.units))
+            print("Current wealth: %d %s." % (self.amount, self.units))
