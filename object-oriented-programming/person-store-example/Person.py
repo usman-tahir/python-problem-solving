@@ -1,11 +1,12 @@
 
 import Wealth
+import Inventory
 
 class Person:
     def __init__(self, name):
         self.name = name
-        self.wealth = Wealth.PersonWealth(name, 0, "dollars")
-        # print(type(self.wealth)) -> <'instance'>
+        self.wealth = Wealth.PersonWealth(name)
+        self.inventory = Inventory.Inventory(10)
 
     def deposit(self, amount):
         self.wealth.deposit(amount)

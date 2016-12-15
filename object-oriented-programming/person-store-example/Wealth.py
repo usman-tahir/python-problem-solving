@@ -39,7 +39,6 @@ class PersonWealth(Wealth):
         self.person_name = person_name
 
     def deposit(self, amount = 0):
-        print("AMOUNT: %d" % amount)
         self.amount += int(amount)
         print("%s just increased their wealth by %d %s" \
             % (self.person_name, amount, self.units))
