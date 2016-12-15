@@ -1,7 +1,8 @@
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, max_hand_size = 3):
         self.name = name
+        self.max_hand_size = max_hand_size
         self.hand = []
         self.score = 0
 
@@ -12,7 +13,10 @@ class Player:
         return self.score
 
     def set_hand(self, hand):
-        self.hand = hand
+        if len(hand) > self.max_hand_size:
+            print("You can only have %i cards in your hand." % (self.max_hand_size))
+        else:
+            self.hand = hand
 
     def set_score(self, score):
         self.score = score
