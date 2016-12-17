@@ -15,3 +15,18 @@ def decimal_to_binary(decimal_number):
         binary_string = binary_string + str(remaining_stack.pop())
 
     return binary_string
+
+def base_converter(decimal_number, base):
+    digits = "0123456789ABCDEF"
+    remaining_stack = stack.Stack()
+
+    while (decimal_number > 0):
+        remaining = decimal_number % base
+        remaining_stack.push(remaining)
+        decimal_number //= base
+
+    output_string = ""
+    while not remaining_stack.empty():
+        output_string += digits[remaining_stack.pop()]
+
+    return output_string
