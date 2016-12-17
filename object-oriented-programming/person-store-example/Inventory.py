@@ -9,14 +9,17 @@ class Inventory:
 
     def search(self, item_name):
         found = False
+        index = 0
         for i in range(len(self.elements)):
-            if (self.elements[i].lower() == item_name.lower()):
+            if (self.elements[i].name.lower() == item_name.lower()):
                 found = True
+                index = i
                 break
-        return found
+        result = [found, index]
+        return result
 
     def add(self, item):
-        if (self.space == self.current_size):
+        if Inventory.is_full(self):
             print("There is no more space to store this item.")
         else:
             self.current_size += 1
@@ -24,18 +27,19 @@ class Inventory:
             print("A(n) %s has been added to the inventory." % (item.name))
 
     def remove(self, item_name):
-        found = Inventory.search(item_name)
+        result_index = Inventory.search(self, item_name)
         removed = False
 
-        if found:
-            for i in range(len(self.elements)):
-                if self.elements[i].name.lower() == item_name.lower():
-                    self.elements.pop(i)
-                    self.current_size -= 1
-                    removed = True
-                    break
+        if result_index[0] == True:
+            self.elements.pop(result_index[1])
+            self.current_size -= 1
+            removed = True
+
         if removed:
             print("The %s has been removed from the inventory." \
                 % (item_name.lower()))
         else:
             print("The inventory does not contain a %s" % (item_name.lower()))
+
+    def is_full(self):
+        return self.current_size == self.space
